@@ -148,6 +148,51 @@ export const asyncRoutes = [{
       }
     }]
 },
+  {
+    path: '/renovation',
+    component: Layout,
+    redirect: '/course/media',
+    name: 'Renovation',
+    alwaysShow: true,
+    meta: {
+      title: '可视化',
+      icon: 'education',
+    },
+    children: [
+      {
+        path: 'mobile_index',
+        name: 'MobileIndex',
+        component: () => import('@/views/renovation/mobile/index'),
+        meta: {
+          title: '移动端'
+        }
+      },
+      {
+        path: 'mobile_edit',
+        name: 'MobileEdit',
+        component: () => import('@/views/renovation/mobile/edit'),
+        hidden: true,
+        meta: {
+          title: '移动端编辑'
+        }
+      }, {
+        path: 'pc_index',
+        name: 'PCIndex',
+        component: () => import('@/views/renovation/pc/index'),
+        meta: {
+          title: 'PC端'
+        }
+      }, {
+        path: 'pc_edit',
+        name: 'PCEdit',
+        component: () => import('@/views/renovation/pc/edit'),
+        hidden: true,
+        meta: {
+          title: '移动端编辑'
+        }
+      },
+    ]
+  },
 
   // {
   //   path: '/permission',

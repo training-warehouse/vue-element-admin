@@ -14,6 +14,7 @@ for (let i = 0; i < count; i++) {
     try: '@cparagraph',
     content: '@cparagraph',
     'price|1': [10, 5, 15, 8, 50, 90],
+    't_price|1': [10, 5, 15, 8, 50, 90],
     'status|1': [0, 1],
     created_time: '@now',
     updated_time: '@now',
