@@ -14,7 +14,8 @@
       <el-row v-else :gutter="20">
         <el-col v-for="(item,index) in list" :key="index"
                 :span="listType === 'one' ? 24 : 12"
-                :style="listType === 'one'? 'display: flex;margin-bottom: 10px':''">
+                :style="listType === 'one'? 'display: flex;':''"
+                style="margin-bottom: 10px">
           <img :src="item.cover" alt="" style="width: 130px;margin-right: 10px">
           <div>
             <div class="list-title">{{item.title}}</div>
@@ -84,6 +85,9 @@
     font-size: 12px;
     color: #999999;
     margin: 5px 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .list-price {

@@ -4,7 +4,10 @@
       title="选择课程"
       :visible.sync="dialogVisible"
       width="70%"
-      top="5vh">
+      top="5vh"
+      :modal-append-to-body="false"
+      append-to-body
+    >
       <el-container style="height: 71vh;margin-top: -30px;margin-bottom: -30px">
         <el-header>
           <div style="display: flex;justify-content: flex-end">

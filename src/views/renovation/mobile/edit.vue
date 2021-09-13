@@ -53,6 +53,9 @@
                 <list :title="item.title" :show-more="item.showMore"
                       :list="item.data" :listType="item.listType"/>
               </template>
+              <template v-else-if="item.type === 'swiper'">
+                <swiper :list="item.data"/>
+              </template>
             </div>
           </div>
         </el-card>
@@ -81,13 +84,15 @@
   import SearchBar from './components/search-bar'
   import componentForm from './components/component-form'
   import List from './components/list'
+  import Swiper from './components/swiper'
 
   export default {
     name: "edit",
     components: {
       SearchBar,
       componentForm,
-      List
+      List,
+      Swiper
     },
     computed: {
       currentComponent() {
@@ -107,7 +112,19 @@
               title: '最新列表',
               showMore: true,
               more: false,
-              data: []
+              data: [{
+                id: 1,
+                title: '测试标题1',
+                cover: '',
+                price: 10,
+                t_price: 20
+              }, {
+                id: 2,
+                title: '测试标题2',
+                cover: '',
+                price: 10,
+                t_price: 20
+              }]
             }
           }, {
             icon: 'el-icon-search',
@@ -115,6 +132,17 @@
             type: 'search',
             default: {
               placeholder: '请输入关键字'
+            }
+          }, {
+            icon: 'el-icon-search',
+            title: '轮播图',
+            type: 'swiper',
+            default: {
+              data: [{
+                'src': ''
+              }, {
+                'src': ''
+              }]
             }
           }
         ],
