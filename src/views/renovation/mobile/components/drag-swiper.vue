@@ -5,13 +5,7 @@
       <div v-for="(element,index) in list" :key="element.id"
            class="list-complete-item"
            style="background-color: #f4f4f4;border: 0">
-        <!--        <div class="list-complete-item-handle"-->
-        <!--             style="display: flex;align-items: center">-->
-        <!--          <img :src="element.cover" alt=""-->
-        <!--               style="width: 100px;height: 60px;margin-right: 10px">-->
-        <!--          {{ element.title }}-->
-        <!--        </div>-->
-        <div style="position:absolute;right:0px;padding: 5px">
+        <div style="position:absolute;right:0;padding: 5px">
                     <span
                       style="float: right ;margin-top: -20px;margin-right:5px;"
                       @click="$emit('del',index)">
@@ -19,7 +13,29 @@
                          class="el-icon-delete"/>
                     </span>
         </div>
-        <img :src="element.src" alt="" style="width: 100%;height: 150px">
+        <div class="component-no-data" v-if="!element.src"
+             @click="handleUploadImage(element)" style="height: 150px">
+          点击上传轮播图
+        </div>
+
+        <img v-else :src="element.src" alt="" style="width: 100%;height: 150px"
+             @click="handleUploadImage(element)">
+        <div style="display: flex;flex-direction: column;align-items:center">
+          <el-select v-model="element.type" placeholder="请选择跳转类型">
+            <el-option
+              v-for="item in options"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value">
+            </el-option>
+          </el-select>
+          <div v-if="element.type" style="margin-top: 10px">
+            <el-button type="primary" v-if="element.type === 'course'">
+              关联课程
+            </el-button>
+            <el-input v-else v-model="element.url" placeholder="请输入要跳转的链接"/>
+          </div>
+        </div>
       </div>
     </draggable>
   </div>
@@ -31,6 +47,7 @@
   export default {
     name: 'DndList',
     components: {draggable},
+    inject: ['componentForm'],
     props: {
       list: {
         type: Array,
@@ -39,11 +56,26 @@
         }
       },
     },
+    data() {
+      return {
+        options: [
+          {'label': '课程', value: 'course'},
+          {'label': '网页地址', value: 'webview'},
+        ]
+      }
+    },
     methods: {
       setData(dataTransfer) {
         // to avoid Firefox bug
         // Detail see : https://github.com/RubaXa/Sortable/issues/1012
         dataTransfer.setData('Text', '')
+      },
+      handleUploadImage(element) {
+        console.log('aaaaa');
+        this.componentForm.$refs.uploadImage.open(val => {
+            element.src = val
+          }, element.src
+        )
       }
     }
   }
@@ -117,6 +149,16 @@
 <style>
   .sortable-ghost {
     background-color: #30B08F !important;
+  }
+
+  .component-no-data {
+    border: 1px solid #cccccc;
+    background-color: #eeeeee;
+    color: #cccccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 0;
   }
 </style>
 

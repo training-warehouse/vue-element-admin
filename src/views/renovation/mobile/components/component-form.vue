@@ -55,6 +55,7 @@
       </template>
     </el-form>
     <choose-course ref="chooseCourse"/>
+    <upload-image ref="uploadImage"/>
   </div>
 </template>
 
@@ -62,14 +63,20 @@
   import dragCourse from './drag-course'
   import dragSwiper from './drag-swiper'
   import ChooseCourse from '@/components/chooseCourse/index'
+  import uploadImage from './upload-image'
 
   export default {
     name: "component-form",
-    components: {dragCourse, ChooseCourse, dragSwiper},
+    components: {dragCourse, ChooseCourse, dragSwiper, uploadImage},
     props: {
       formType: {
         type: String,
         default: ''
+      }
+    },
+    provide() {
+      return {
+        componentForm: this
       }
     },
     data() {
@@ -99,7 +106,11 @@
         }
 
         this.swiper.data.push({
-          src: ''
+          src: '',
+          type: '',
+          course_title: '',
+          course_id: '',
+          url: ''
         })
       },
       deleteSwiper(index) {
@@ -108,11 +119,11 @@
           cancelButtonText: '取消',
           type: 'warning'
         }).then(action => {
-              this.swiper.data.splice(index, 1)
-              this.$message({
-                message: '删除轮播图成功',
-                type: 'success'
-              })
+            this.swiper.data.splice(index, 1)
+            this.$message({
+              message: '删除轮播图成功',
+              type: 'success'
+            })
           }
         )
       },

@@ -138,11 +138,7 @@
             title: '轮播图',
             type: 'swiper',
             default: {
-              data: [{
-                'src': ''
-              }, {
-                'src': ''
-              }]
+              data: []
             }
           }
         ],
