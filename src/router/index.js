@@ -184,7 +184,7 @@ export const asyncRoutes = [{
         }
       }, {
         path: 'pc_edit',
-        name: 'PCEdit',
+        name: 'PcEdit',
         component: () => import('@/views/renovation/pc/edit'),
         hidden: true,
         meta: {

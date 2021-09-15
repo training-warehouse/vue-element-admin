@@ -31,3 +31,36 @@ export function deleteMobile(data) {
     data
   })
 }
+
+export function fetchPcList(query) {
+  return request({
+    url: '/vue-element-admin/renovation/pc/list',
+    method: 'get',
+    params: query
+  })
+}
+
+export function createPc(data) {
+  return request({
+    url: '/vue-element-admin/renovation/pc/create',
+    method: 'post',
+    data
+  })
+}
+
+export function updatePc(data) {
+  return request({
+    url: '/vue-element-admin/renovation/pc/update',
+    method: 'post',
+    data
+  })
+}
+
+export function deletePc(data) {
+  return request({
+    url: '/vue-element-admin/renovation/pc/delete',
+    method: 'post',
+    data
+  })
+}
+

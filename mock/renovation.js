@@ -67,6 +67,57 @@ module.exports = [
         data: 'success'
       }
     }
+  },
+
+    {
+    url: '/vue-element-admin/renovation/pc/list',
+    type: 'get',
+    response: config => {
+      const {status, title, page = 1, limit = 20, sort} = config.query
+
+      let mockList = List
+      const pageList = mockList.filter((item, index) => index < limit * page && index >= limit * (page - 1))
+
+      return {
+        code: 20000,
+        data: {
+          total: mockList.length,
+          items: pageList
+        }
+      }
+    }
+  },
+
+  {
+    url: '/vue-element-admin/renovation/pc/create',
+    type: 'post',
+    response: _ => {
+      return {
+        code: 20000,
+        data: 'success'
+      }
+    }
+  },
+
+  {
+    url: '/vue-element-admin/renovation/pc/update',
+    type: 'post',
+    response: _ => {
+      return {
+        code: 20000,
+        data: 'success'
+      }
+    }
+  },
+  {
+    url: '/vue-element-admin/renovation/pc/delete',
+    type: 'post',
+    response: _ => {
+      return {
+        code: 20000,
+        data: 'success'
+      }
+    }
   }
 ]
 
