@@ -13,27 +13,34 @@
                          class="el-icon-delete"/>
                     </span>
         </div>
-        <div class="component-no-data" v-if="!element.src"
-             @click="handleUploadImage(element)" style="height: 150px">
-          点击上传轮播图
-        </div>
 
-        <img v-else :src="element.src" alt="" style="width: 100%;height: 150px"
-             @click="handleUploadImage(element)">
-        <div style="display: flex;flex-direction: column;align-items:center">
-          <el-select v-model="element.type" placeholder="请选择跳转类型">
-            <el-option
-              v-for="item in options"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value">
-            </el-option>
-          </el-select>
-          <div v-if="element.type" style="margin-top: 10px">
-            <el-button type="primary" v-if="element.type === 'course'">
-              关联课程
-            </el-button>
-            <el-input v-else v-model="element.url" placeholder="请输入要跳转的链接"/>
+        <div style="display: flex;align-items: center">
+          <img :src="element.src" alt="" style="width: 40px;height: 40px"
+               @click="handleUploadImage(element)">
+
+          <div
+            style="display: flex;flex-direction: column;align-items:center">
+            <el-input v-model="element.name" size="mini" placeholder="分类名称"
+                      style="margin-bottom: 10px"/>
+
+            <el-select size="mini" v-model="element.type" placeholder="请选择跳转类型">
+              <el-option
+                v-for="item in options"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value">
+              </el-option>
+            </el-select>
+            <div v-if="element.type" style="margin-top: 10px">
+              <el-button type="primary" v-if="element.type === 'page'">
+                关联页面
+              </el-button>
+              <el-button type="primary" v-else-if="element.type === 'course'">
+                关联课程
+              </el-button>
+              <el-input size="mini" v-else v-model="element.url"
+                        placeholder="请输入要跳转的链接"/>
+            </div>
           </div>
         </div>
       </div>
@@ -59,6 +66,7 @@
     data() {
       return {
         options: [
+          {'label': '页面', value: 'page'},
           {'label': '课程', value: 'course'},
           {'label': '网页地址', value: 'webview'},
         ]

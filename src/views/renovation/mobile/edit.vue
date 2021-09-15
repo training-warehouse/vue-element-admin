@@ -56,13 +56,27 @@
               <template v-else-if="item.type === 'swiper'">
                 <swiper :list="item.data"/>
               </template>
+              <template v-else-if="item.type === 'icons'">
+                <icons :list="item.data"/>
+              </template>
+              <template v-else-if="item.type === 'coupon'">
+                <coupon :list="item.data"/>
+              </template>
+              <template v-else-if="item.type === 'promotion'">
+                <promotion :title="item.title"
+                           :list="item.data" :listType="item.listType"/>
+              </template>
+              <template v-else-if="item.type === 'imageAd'">
+                <image-ad :list="item.data"/>
+              </template>
             </div>
           </div>
         </el-card>
       </el-col>
     </el-row>
 
-    <div style="position: fixed;right: 120px;top: 100px">
+    <div v-show="currentComponent.type && currentComponent.type !== 'coupon'"
+         style="position: fixed;right: 120px;top: 100px">
       <el-card class="box-card"
                style="width:600px;height: 80vh;position: relative">
         <div slot="header" class="clearfix">
@@ -85,6 +99,10 @@
   import componentForm from './components/component-form'
   import List from './components/list'
   import Swiper from './components/swiper'
+  import icons from './components/icons'
+  import coupon from './components/coupon'
+  import promotion from './components/promotion'
+  import imageAd from './components/imageAd'
 
   export default {
     name: "edit",
@@ -92,7 +110,11 @@
       SearchBar,
       componentForm,
       List,
-      Swiper
+      Swiper,
+      icons,
+      coupon,
+      promotion,
+      imageAd
     },
     computed: {
       currentComponent() {
@@ -134,13 +156,96 @@
               placeholder: '请输入关键字'
             }
           }, {
-            icon: 'el-icon-search',
+            icon: 'el-icon-s-help',
             title: '轮播图',
             type: 'swiper',
             default: {
               data: []
             }
-          }
+          }, {
+            icon: 'el-icon-menu',
+            title: '图标分类',
+            type: 'icons',
+            default: {
+              data: [
+                {
+                  src: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png',
+                  name: '分类',
+                  type: '',
+                  url: '',
+                  page_id: 0,
+                  page_title: "",
+                  course_title: "",
+                  course_id: "",
+                },
+                {
+                  src: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png',
+                  name: '分类',
+                  type: '',
+                  url: '',
+                  page_id: 0,
+                  page_title: "",
+                  course_title: "",
+                  course_id: "",
+                },
+                {
+                  src: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png',
+                  name: '分类',
+                  type: '',
+                  url: '',
+                  page_id: 0,
+                  page_title: "",
+                  course_title: "",
+                  course_id: "",
+                },
+                {
+                  src: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png',
+                  name: '分类',
+                  type: '',
+                  url: '',
+                  page_id: 0,
+                  page_title: "",
+                  course_title: "",
+                  course_id: "",
+                },
+              ]
+            }
+          }, {
+            icon: 'el-icon-s-finance',
+            title: '优惠券',
+            type: 'coupon',
+            default: {
+              data: [{
+                price: 100,
+                condition: '满200可用'
+              }, {
+                price: 100,
+                condition: '满200可用'
+              }, {
+                price: 100,
+                condition: '满200可用'
+              }, {
+                price: 100,
+                condition: '满200可用'
+              }]
+            }
+          }, {
+            icon: 'el-icon-s-order',
+            title: '限时拼团',
+            type: 'promotion',
+            default: {
+              listType: 'group',
+              title: '拼团',
+              data: []
+            }
+          }, {
+            icon: 'el-icon-picture-outline',
+            title: '图片广告',
+            type: 'imageAd',
+            default: {
+              data: []
+            }
+          },
         ],
         templates: []
       }
