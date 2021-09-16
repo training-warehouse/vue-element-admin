@@ -14,8 +14,9 @@
                     </span>
         </div>
 
-        <div style="display: flex;align-items: center">
-          <img :src="element.src" alt="" style="width: 40px;height: 40px"
+        <div style="display: flex;align-items: center;
+            flex-direction: column;justify-content: center">
+          <img :src="element.src" alt="" style="width: 155px;height: 60px"
                @click="handleUploadImage(element)">
 
           <div

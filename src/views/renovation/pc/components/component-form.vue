@@ -2,20 +2,13 @@
   <div>
     <el-form ref="form" label-width="80px">
       <el-form-item label="占位提示" v-if="formType === 'search'">
-        <el-input v-model="search.placeholder" style="width:400px"
+        <el-input v-model="search.placeholder" style="width:150px"
                   @input="handleChange('placeholder')"/>
       </el-form-item>
 
       <template v-else-if="formType === 'list'">
-        <el-form-item label="类型">
-          <el-radio-group v-model="list.listType"
-                          @change="handleChange('listType')">
-            <el-radio label="one">单栏</el-radio>
-            <el-radio label="two">双栏</el-radio>
-          </el-radio-group>
-        </el-form-item>
         <el-form-item label="标题">
-          <el-input v-model="list.title" style="width:400px"
+          <el-input v-model="list.title" style="width:150px"
                     @input="handleChange('title')"/>
         </el-form-item>
         <el-form-item label="更多">
@@ -167,7 +160,7 @@
         }
 
         this.imageAd.data.push({
-          src: "https://dummyimage.com/365x150",
+          src: "https://dummyimage.com/800x100",
           type: '',
           course_title: '',
           course_id: '',
@@ -183,7 +176,7 @@
           })
         }
         this.icons.data.push({
-          src: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png',
+          src: 'https://dummyimage.com/155x60',
           name: '分类',
           type: '',
           url: '',

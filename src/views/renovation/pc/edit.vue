@@ -25,9 +25,12 @@
         <el-row :gutter="20">
           <el-col :span="23" style="padding-top: 20px">
             <el-card style="min-height: 80vh;overflow: inherit"
-                     :body-style="{padding: '10px 8px'}">
+                     :body-style="{padding: '0 8px'}">
 
               <div style="margin-left: -10px;margin-right: -10px;">
+
+                <nav-bar/>
+
                 <div class="checked-box"
                      v-for="(item,index) in templates" :key="item.id"
                      :class="item.checked ? 'checked-box-active':''"
@@ -63,6 +66,8 @@
                   </template>
                 </div>
               </div>
+
+              <footer-page></footer-page>
             </el-card>
           </el-col>
         </el-row>
@@ -96,6 +101,8 @@
   import icons from './components/icons'
   import promotion from './components/promotion'
   import imageAd from './components/imageAd'
+  import navBar from './components/nav-bar'
+  import footerPage from './components/footer-page'
 
   export default {
     name: "edit",
@@ -105,7 +112,9 @@
       Swiper,
       icons,
       promotion,
-      imageAd
+      imageAd,
+      navBar,
+      footerPage
     },
     computed: {
       currentComponent() {
@@ -139,7 +148,7 @@
                 t_price: 20
               }]
             }
-          },{
+          }, {
             icon: 'el-icon-s-help',
             title: '轮播图',
             type: 'swiper',
@@ -153,7 +162,7 @@
             default: {
               data: [
                 {
-                  src: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png',
+                  src: 'https://dummyimage.com/155x60',
                   name: '分类',
                   type: '',
                   url: '',
@@ -163,7 +172,7 @@
                   course_id: "",
                 },
                 {
-                  src: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png',
+                  src: 'https://dummyimage.com/155x60',
                   name: '分类',
                   type: '',
                   url: '',
@@ -173,7 +182,7 @@
                   course_id: "",
                 },
                 {
-                  src: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png',
+                  src: 'https://dummyimage.com/155x60',
                   name: '分类',
                   type: '',
                   url: '',
@@ -183,7 +192,7 @@
                   course_id: "",
                 },
                 {
-                  src: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png',
+                  src: 'https://dummyimage.com/155x60',
                   name: '分类',
                   type: '',
                   url: '',

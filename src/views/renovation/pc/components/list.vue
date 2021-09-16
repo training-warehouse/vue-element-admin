@@ -13,16 +13,18 @@
       </div>
       <el-row v-else :gutter="20">
         <el-col v-for="(item,index) in list" :key="index"
-                :span="listType === 'one' ? 24 : 12"
-                :style="listType === 'one'? 'display: flex;':''"
-                style="margin-bottom: 10px">
-          <img :src="item.cover" alt="" style="width: 130px;margin-right: 10px">
-          <div>
-            <div class="list-title">{{item.title}}</div>
-            <div class="list-desc">{{item.try}}</div>
-            <div>
-              <span>￥{{item.price}}</span>
-              <span>￥{{item.t_price}}</span>
+                :span="6"
+                style="margin-bottom: 20px;">
+          <div style="box-shadow: 0 6px 10px 0 #dddddd">
+            <img :src="item.cover" alt=""
+                 style="width: 100%;margin-right: 10px">
+            <div style="padding: 0 8px 10px 8px">
+              <div class="list-title">{{item.title}}</div>
+              <div class="list-desc">{{item.try}}</div>
+              <div>
+                <span>￥{{item.price}}</span>
+                <span>￥{{item.t_price}}</span>
+              </div>
             </div>
           </div>
         </el-col>

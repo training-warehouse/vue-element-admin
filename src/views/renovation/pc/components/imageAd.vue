@@ -4,7 +4,7 @@
       【图片广告模块】请点击关联数据
     </div>
     <div v-else v-for="(item,index) in list" :key="index">
-      <img :src="item.src" alt="" style="width: 100%;height: 150px">
+      <img :src="item.src" alt="" style="width: 100%;height: 100px">
     </div>
   </div>
 </template>

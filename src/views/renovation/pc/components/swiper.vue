@@ -1,11 +1,11 @@
 <template>
-  <div>
+  <div style="padding: 10px 20px">
     <div class="component-no-data" v-if="!list.length">
       【轮播图模块】请点击关联数据
     </div>
-    <el-carousel v-else height="150px">
+    <el-carousel v-else height="340px">
       <el-carousel-item v-for="(item,index) in list" :key="index">
-        <img :src="item.src" alt="" style="width: 100%;height: 150px">
+        <img :src="item.src" alt="" style="width: 100%;height: 340px">
       </el-carousel-item>
     </el-carousel>
   </div>
