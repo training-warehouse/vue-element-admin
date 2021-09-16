@@ -90,6 +90,10 @@
         </div>
       </el-card>
     </div>
+
+    <el-button type="primary"
+               style="position:fixed;right: 5px;top: 90px;z-index: 1000">保存
+    </el-button>
   </div>
 </template>
 
